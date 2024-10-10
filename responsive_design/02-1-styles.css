@@ -170,11 +170,14 @@
   
   .visually-hidden:not(:focus):not(:active) {
     position: absolute !important;
-    height: 1px;
-    width: 1px;
     overflow: hidden;
     clip: rect(1px, 1px, 1px, 1px);
     white-space: nowrap;
+  }
+
+  main img {
+    height: auto;
+    width: 100%;
   }
   
   /*** 2. LAYOUT ***/
@@ -183,18 +186,36 @@
       ============================= */
   
   .container {
-    width: max-width;
+    max-width: 960px;
     margin-left: auto;
     margin-right: auto;
   }
   
   /* Grid
       ============================= */
+
+  @media screen and (max-width: 767px) {
+    :root {
+        --section-padding: 5rem 1.5rem;
+        --section-body-padding: 2rem 0 0;
+    }
+    ul row, .row {
+        flex-direction: column;
+        margin: 0;
+    }
+    [class^="col-"] {
+        margin: 0 0 3rem 0 !important;
+    }
+    .col-1-3, .col-1-2 {
+        width: 100% !important;
+    }
+  }
   
   ul.row {
     margin: -1rem;
     padding: 0;
     list-style: none;
+    
   }
   
   .row {
@@ -212,9 +233,17 @@
   .col-1-2 {
     width: calc((100% / 2) - 2rem);
   }
+
+
   
   /* Navbar
       ============================= */
+
+    @media screen and (max-width: 767px) {
+        .navbar-menu {
+            display: none;
+        }
+    }
   
   .nav {
     margin: 0;
@@ -398,6 +427,12 @@
   
   .section-latest-news .row {
     flex-direction: row-reverse;
+  }
+
+  @media screen and (max-width: 767px) {
+    .section-latest-news .row {
+        flex-direction: column;
+    }
   }
   
   /* Section SERVICES
